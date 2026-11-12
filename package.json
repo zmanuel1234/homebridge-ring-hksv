@@ -1,0 +1,52 @@
+{
+  "name": "homebridge-ring-hksv",
+  "version": "0.1.0-beta.1",
+  "description": "HomeKit Secure Video recording for a Ring video doorbell. Runs alongside homebridge-ring, which keeps the Ring Alarm and sensors.",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src",
+    "config.schema.json",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zmanuel1234/homebridge-ring-hksv.git"
+  },
+  "homepage": "https://github.com/zmanuel1234/homebridge-ring-hksv#readme",
+  "bugs": {
+    "url": "https://github.com/zmanuel1234/homebridge-ring-hksv/issues"
+  },
+  "author": "zmanuel1234",
+  "license": "Apache-2.0",
+  "keywords": [
+    "homebridge-plugin",
+    "supports-hap",
+    "ring",
+    "doorbell",
+    "video-doorbell",
+    "camera",
+    "homekit",
+    "hksv",
+    "homekit-secure-video"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test test/*.test.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "engines": {
+    "homebridge": ">=1.8.0 || ^2.0.0",
+    "node": "^20.18.0 || ^22.10.0 || ^24.0.0"
+  },
+  "dependencies": {
+    "ring-client-api": "14.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "homebridge": "^2.5.0",
+    "typescript": "^5.9.0"
+  }
+}

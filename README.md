@@ -23,7 +23,7 @@ the battery like Live View in the Ring app and shows in the Ring app's history.
 1. **A token of its own.** On the Pi:
 
    ```
-   npx -p ring-client-api ring-auth-cli
+   cd ~ && npx -y -p ring-client-api@14.3.0 ring-auth-cli
    ```
 
    Sign in (with the 2FA code) and copy the token. Don't reuse homebridge-ring's: two apps

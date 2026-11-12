@@ -15,7 +15,7 @@
       "refreshToken": {
         "title": "Ring refresh token",
         "type": "string",
-        "description": "A token made for this plugin, not the one homebridge-ring uses (two apps sharing one token sign each other out). On the Pi: npx -p ring-client-api ring-auth-cli. The plugin saves the newer tokens Ring issues, so this one is only used once.",
+        "description": "A token made for this plugin, not the one homebridge-ring uses (two apps sharing one token sign each other out). On the Pi: cd ~ && npx -y -p ring-client-api@14.3.0 ring-auth-cli. The plugin saves the newer tokens Ring issues, so this one is only used once.",
         "x-schema-form": { "type": "password" }
       },
       "camera": {

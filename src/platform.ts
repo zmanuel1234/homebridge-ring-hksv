@@ -77,7 +77,7 @@ export class RingHksvPlatform implements DynamicPlatformPlugin {
     } catch (e) {
       this.log.error(
         `Could not sign in to Ring: ${(e as Error).message}. If the token was revoked or used by another app, ` +
-          'create a new one with: npx -p ring-client-api ring-auth-cli, and paste it into the settings.',
+          'create a new one with: cd ~ && npx -y -p ring-client-api@14.3.0 ring-auth-cli, and paste it into the settings.',
       );
       return;
     }

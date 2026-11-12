@@ -24,7 +24,7 @@ export function readConfig(raw: Record<string, unknown>): PluginConfig {
   const refreshToken = text(raw.refreshToken);
   if (!refreshToken) {
     throw new ConfigError(
-      'refreshToken is missing. Create one on the Pi with: npx -p ring-client-api ring-auth-cli ' +
+      'refreshToken is missing. Create one on the Pi with: cd ~ && npx -y -p ring-client-api@14.3.0 ring-auth-cli ' +
         '(use a new token for this plugin, not the one homebridge-ring uses).',
     );
   }

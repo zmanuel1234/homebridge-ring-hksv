@@ -1,0 +1,55 @@
+{
+  "pluginAlias": "RingHksv",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "HomeKit Secure Video for a Ring doorbell. **Version 0.1 adds nothing to HomeKit yet**: it signs in to Ring, logs the doorbell's events and, with **Stream probe** on, tests whether its video can be recorded without re-encoding. Run it on its own child bridge, next to homebridge-ring.",
+  "schema": {
+    "type": "object",
+    "required": ["name", "refreshToken"],
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "default": "Ring HKSV"
+      },
+      "refreshToken": {
+        "title": "Ring refresh token",
+        "type": "string",
+        "description": "A token made for this plugin, not the one homebridge-ring uses (two apps sharing one token sign each other out). On the Pi: npx -p ring-client-api ring-auth-cli. The plugin saves the newer tokens Ring issues, so this one is only used once.",
+        "x-schema-form": { "type": "password" }
+      },
+      "camera": {
+        "title": "Camera",
+        "type": "string",
+        "description": "The doorbell's name in the Ring app, or its id (both are in the log at start). Leave empty if the account has one doorbell.",
+        "placeholder": "Front Door"
+      },
+      "ffmpegPath": {
+        "title": "ffmpeg path",
+        "type": "string",
+        "description": "The ffmpeg to use. Leave empty for the one ring-client-api brings (ffmpeg-for-homebridge).",
+        "placeholder": "/usr/bin/ffmpeg"
+      },
+      "probe": {
+        "title": "Stream probe",
+        "type": "boolean",
+        "default": false,
+        "description": "Once, 15 s after Homebridge starts: a live call from the doorbell (like Live View in the Ring app, with its battery use), measured and saved as an MP4 in the plugin's folder. The log says whether HomeKit Secure Video can record its video as it is. Turn it off afterwards."
+      },
+      "probeSeconds": {
+        "title": "Stream probe length (s)",
+        "type": "integer",
+        "default": 30,
+        "minimum": 10,
+        "maximum": 60,
+        "condition": { "functionBody": "return model.probe === true;" }
+      },
+      "debug": {
+        "title": "ring-client-api debug log",
+        "type": "boolean",
+        "default": false,
+        "description": "The library's own detailed log, for troubleshooting."
+      }
+    }
+  }
+}
